@@ -74,6 +74,7 @@ class ManageCodes(commands.Cog):
     @set_code.error
     @get_code.error
     @unset_code.error
+    @stop_deleting.error
     async def on_error(self, interaction: discord.Interaction, error: Exception):
         if isinstance(error, app_commands.MissingRole):
             embed = discord.Embed(
