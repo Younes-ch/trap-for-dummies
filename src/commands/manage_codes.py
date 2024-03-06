@@ -36,37 +36,37 @@ class ManageCodes(commands.Cog):
     @app_commands.describe(code="Check if code is correct")
     async def check_code(self, interaction: discord.Interaction, code: str):
         if self.codes[interaction.channel_id] == code:
-            await interaction.response.send_message(f"✅ Code has been found: {code}")
+            await interaction.response.send_message(f"✅ **Code has been found: ||{code}||**")
             self.code_found[interaction.channel_id] = True
         else:
-            await interaction.response.send_message(f"❌ Code is incorrect", ephemeral=True)
+            await interaction.response.send_message(f"❌ **Code is incorrect**", ephemeral=True)
 
     @app_commands.command(description="Set the code for the channel")
     @app_commands.describe(code="Set the code for this channel")
     @app_commands.checks.has_role(1214714169757147236)
     async def set_code(self, interaction: discord.Interaction, code: str):
         self.codes[interaction.channel_id] = code
-        await interaction.response.send_message(f"✅ Code for this channel has been set to {code}", ephemeral=True)
+        await interaction.response.send_message(f"✅ **Code for this channel has been set to ||{code}||**", ephemeral=True)
     
     @app_commands.command(description="Get the code for the channel")
     @app_commands.checks.has_role(1214714169757147236)
     async def get_code(self, interaction: discord.Interaction):
         if self.codes[interaction.channel_id] == "":
-            await interaction.response.send_message(f"⛔ Code for this channel is not set yet.", ephemeral=True)
+            await interaction.response.send_message(f"⛔ **Code for this channel is not set yet.**", ephemeral=True)
         else:
-            await interaction.response.send_message(f"🔒 Code for this channel is {self.codes[interaction.channel_id]}", ephemeral=True)
+            await interaction.response.send_message(f"🔒 **Code for this channel is ||{self.codes[interaction.channel_id]}||**", ephemeral=True)
 
     @app_commands.command(description="Unset the code for the channel")
     @app_commands.checks.has_role(1214714169757147236)
     async def unset_code(self, interaction: discord.Interaction):
         self.codes[interaction.channel_id] = ""
-        await interaction.response.send_message(f"⛔ Code for this channel has been unset", ephemeral=True)
+        await interaction.response.send_message(f"⛔ **Code for this channel has been unset.**", ephemeral=True)
 
     @app_commands.command(description="Stop deleting messages")
     @app_commands.checks.has_role(1214714169757147236)
     async def stop_deleting(self, interaction: discord.Interaction):
         self.code_found[interaction.channel_id] = False
-        await interaction.response.send_message(f"✅ Code deletion has been stopped.", ephemeral=True)
+        await interaction.response.send_message(f"✅ **Code deletion has been stopped.**", ephemeral=True)
 
     @set_code.error
     @get_code.error
