@@ -34,6 +34,12 @@ cmds = [
         'description': 'Stop deleting messages.'
     },
     {
+        'name': '/clear',
+        'id': '1214746583611211797',
+        'args': ['[number_of_messages] [filter_by_user] [filter_by_role] [filter_by_bot]'],
+        'description': 'Cleans messages from a channel.'
+    },
+    {
         'name': '/help',
         'id': '1214737997149245471',
         'args': [''],
