@@ -6,8 +6,8 @@ import os
 class Bot(commands.Bot):
 
     def __init__(self):
-        super().__init__(command_prefix="!", intents=discord.Intents.all())
-        self.available_commands = ["commands.manage_codes"]
+        super().__init__(command_prefix="!", intents=discord.Intents.all(), help_command=None)
+        self.available_commands = ["commands.manage_codes", "commands.help"]
 
     async def on_ready(self):
         print(f'Logged in as {self.user.name} - {self.user.id}')
