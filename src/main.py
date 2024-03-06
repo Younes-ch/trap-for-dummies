@@ -6,7 +6,7 @@ import os
 class Bot(commands.Bot):
 
     def __init__(self):
-        super().__init__(command_prefix="!", intents=discord.Intents.all(), help_command=None)
+        super().__init__(command_prefix="!", intents=discord.Intents.all(), activity=discord.Activity(type=discord.ActivityType.listening, name="/help"), help_command=None)
         self.available_commands = ["commands.manage_codes", "commands.help", "commands.clear"]
 
     async def on_ready(self):
