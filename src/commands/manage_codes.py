@@ -65,8 +65,11 @@ class ManageCodes(commands.Cog):
     @app_commands.command(description="Stop deleting messages")
     @app_commands.checks.has_role(1214714169757147236)
     async def stop_deleting(self, interaction: discord.Interaction):
-        self.code_found[interaction.channel_id] = False
-        await interaction.response.send_message(f"✅ **Code deletion has been stopped.**", ephemeral=True)
+        if self.code_found[interaction.channel_id]:
+            self.code_found[interaction.channel_id] = False
+            await interaction.response.send_message(f"✅ **Code deletion has been stopped.**", ephemeral=True)
+        else:
+            await interaction.response.send_message(f"⛔ **Code deletion is not active.**", ephemeral=True)
 
     @set_code.error
     @get_code.error
